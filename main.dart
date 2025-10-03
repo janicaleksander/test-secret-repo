@@ -1,5 +1,6 @@
 // simple_city_simulation.dart
 import 'dart:math';
+import 'dart:io'; // <-- potrzebne do Platform.environment
 
 class Person {
   String name;
@@ -59,6 +60,14 @@ class City {
 }
 
 void main() {
+  // --- NOWOŚĆ: Odczyt zmiennej środowiskowej ---
+  var password = Platform.environment['PASSWORD'];
+  if (password == null) {
+    print("WARNING: PASSWORD env variable is not set!");
+  } else {
+    print("Successfully loaded PASSWORD from environment: ${'*' * password.length}");
+  }
+
   var items = [
     "Apple", "Book", "Coin", "Hat", "Bottle", "Stone", "Pen", "Bag", "Key", "Flower"
   ];
